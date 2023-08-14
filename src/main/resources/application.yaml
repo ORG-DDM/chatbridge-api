@@ -26,7 +26,7 @@ springdoc:
   default-produces-media-type: application/json;charset=UTF-8
   api-docs:
     enabled: false
-    path: /api-docs/sbp
+    path: /api-docs/chat-bridge
   swagger-ui:
-    url: /api-docs/sbp/main.json
-    path: /v1/sbp/
+    url: /api-docs/chat-bridge/main.json
+    path: /v1/chat-bridge/

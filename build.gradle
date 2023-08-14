@@ -6,7 +6,7 @@ plugins {
     id 'java-test-fixtures'
 }
 
-group = 'com.example.sbp'
+group = 'org.ddm.chatbridge'
 version = '0.0.1-SNAPSHOT'
 
 java {
@@ -28,6 +28,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
 
     // test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
