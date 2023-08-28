@@ -30,6 +30,10 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-security'
 
+    // session-redis
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    implementation 'org.springframework.session:spring-session-data-redis'
+
     // test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
@@ -97,7 +101,7 @@ openapi3 {
     mkdir(outputPath)
 
     servers = [{ url = "localhost:8080"}]
-    title = "샘플 API 문서"
+    title = "ChatBridge API 문서"
     description = "Spring REST Docs with SwaggerUI."
     version = "1.0.0"
     outputFileNamePrefix = 'open-api-3.0.1'

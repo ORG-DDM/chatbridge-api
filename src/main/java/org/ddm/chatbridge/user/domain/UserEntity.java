@@ -8,7 +8,7 @@ import lombok.experimental.Accessors;
 import org.ddm.chatbridge.common.entity.BaseEntity;
 
 @Entity
-@Table(name = "user")
+@Table(name = "\"user\"")
 @Getter
 @Accessors(fluent = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -18,7 +18,7 @@ public class UserEntity extends BaseEntity {
     private Long id;
 
     @Column(nullable = false)
-    private String uniqueId;
+    private String loginId;
 
     @Column(nullable = false)
     private String name;
@@ -26,10 +26,10 @@ public class UserEntity extends BaseEntity {
     @Column(nullable = false)
     private String password;
 
-    public UserEntity(String uniqueId,
+    public UserEntity(String loginId,
                       String name,
                       String password) {
-        this.uniqueId = uniqueId;
+        this.loginId = loginId;
         this.name = name;
         this.password = password;
     }

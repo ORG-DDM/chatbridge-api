@@ -15,9 +15,10 @@ import static org.ddm.chatbridge.common.support.Status.USER_ALREADY_EXISTS;
 public class CreateUserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+
     @Transactional
     public void create(Request request) {
-        checkAlreadyExists(request.uniqueId());
+        checkAlreadyExists(request.loginId());
 
         var user = createUserEntity(request);
 
@@ -26,21 +27,21 @@ public class CreateUserService {
 
     private UserEntity createUserEntity(Request request) {
         return new UserEntity(
-            request.uniqueId(),
+            request.loginId(),
             request.name(),
             passwordEncoder.encode(request.password())
         );
     }
 
-    private void checkAlreadyExists(String uniqueId) {
-        userRepository.findByUniqueId(uniqueId)
+    private void checkAlreadyExists(String loginId) {
+        userRepository.findByLoginId(loginId)
             .ifPresent(user -> {
                 throw new BadRequestException(USER_ALREADY_EXISTS);
             });
     }
 
     public record Request(
-        String uniqueId,
+        String loginId,
         String name,
         String password
     ) {

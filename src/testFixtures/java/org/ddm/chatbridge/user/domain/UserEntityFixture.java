@@ -10,7 +10,8 @@ import org.ddm.chatbridge.common.TestFixture;
 @Setter
 @Accessors(chain = true)
 public class UserEntityFixture implements TestFixture<UserEntity> {
-    private String uniqueId = "testUniqueId";
+    private Long id;
+    private String loginId = "testUniqueId";
     private String name = "testName";
     private String password = "testPassword";
 

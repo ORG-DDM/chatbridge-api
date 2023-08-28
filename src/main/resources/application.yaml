@@ -15,11 +15,28 @@ spring:
       pageable:
         default-page-size: 10
         one-indexed-parameters: true
+    redis:
+      host: ${REDIS_HOST}
+      port: 6379
+
+  session:
+    store-type: redis
+    redis:
+      namespace: chat-bridge:session
 
 server:
   servlet:
     encoding:
       charset: UTF-8
+    session:
+      cookie:
+        path: /
+        name: JSESSIONID
+        # domain: chat-brain.com
+        http-only: true
+        secure: true
+        same-site: none
+      timeout: 3600
 
 springdoc:
   default-consumes-media-type: application/json;charset=UTF-8
@@ -30,3 +47,7 @@ springdoc:
   swagger-ui:
     url: /api-docs/chat-bridge/main.json
     path: /v1/chat-bridge/
+
+logging:
+  level:
+    org.springframework.security: TRACE

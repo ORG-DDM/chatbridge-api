@@ -17,9 +17,9 @@ public class CreateUserController {
     private final CreateUserService createUserService;
 
     @PostMapping("/users")
-    public ApiResponse<Void> create(@RequestBody @Valid CreateUserController.Request request) {
+    public ApiResponse<Void> create(@RequestBody @Valid Request request) {
         var serviceRequest = new CreateUserService.Request(
-            request.uniqueId(),
+            request.loginId(),
             request.name(),
             request.password()
         );
@@ -31,7 +31,7 @@ public class CreateUserController {
 
     record Request(
         @NotBlank(message = "id는 필수입니다.")
-        String uniqueId,
+        String loginId,
         @NotBlank(message = "이름은 필수입니다.")
         String name,
         @NotBlank(message = "비밀번호는 필수입니다.")

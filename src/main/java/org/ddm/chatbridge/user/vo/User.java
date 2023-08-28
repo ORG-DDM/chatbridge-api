@@ -10,7 +10,7 @@ public record User(
     public static User from(UserEntity userEntity) {
         return new User(
             userEntity.id(),
-            userEntity.uniqueId(),
+            userEntity.loginId(),
             userEntity.name()
         );
     }

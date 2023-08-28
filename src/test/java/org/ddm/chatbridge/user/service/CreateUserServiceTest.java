@@ -7,8 +7,6 @@ import org.ddm.chatbridge.common.TestFixture;
 import org.ddm.chatbridge.common.exception.BadRequestException;
 import org.ddm.chatbridge.user.dataaccess.UserRepository;
 import org.ddm.chatbridge.user.domain.UserEntityFixture;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -40,7 +38,7 @@ class CreateUserServiceTest {
     void success() {
         //given
         var request = new RequestFixture().build();
-        given(userRepository.findByUniqueId(eq(request.uniqueId())))
+        given(userRepository.findByLoginId(eq(request.loginId())))
             .willReturn(Optional.empty());
         given(passwordEncoder.encode(eq(request.password())))
             .willReturn("testEncodedPassword");
@@ -57,7 +55,7 @@ class CreateUserServiceTest {
     void failAlreadyExists() {
         //given
         var request = new RequestFixture().build();
-        given(userRepository.findByUniqueId(eq(request.uniqueId())))
+        given(userRepository.findByLoginId(eq(request.loginId())))
             .willReturn(Optional.of(new UserEntityFixture().build()));
 
         //when
